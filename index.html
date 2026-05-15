@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="sr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Piatto Banjica, italijanski restoran na Banjici. Pizza iz peći na drva, pasta, doručak, ručak, večera i opuštena atmosfera.">
+    <title>Piatto Banjica | Restoran Banjica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Preskoči na sadržaj</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#pocetna" aria-label="Piatto Banjica početna">
+        <img src="assets/images/logo-piatto.png" alt="Piatto Banjica">
+      </a>
+
+      <nav class="main-nav" aria-label="Glavna navigacija" data-nav>
+        <a href="#pocetna">Početna</a>
+        <a href="#meni">Meni</a>
+        <a href="#galerija">Galerija</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-label="Otvori meni" aria-expanded="false" data-nav-toggle>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+    <button class="nav-backdrop" type="button" aria-label="Zatvori meni" data-nav-backdrop></button>
+
+    <main id="main">
+      <section class="hero" id="pocetna" aria-label="Piatto Banjica">
+        <div class="hero__media" role="img" aria-label="Enterijer restorana Piatto Banjica"></div>
+        <div class="hero__shade"></div>
+        <div class="hero__content">
+          <p class="hero__eyebrow reveal">Piatto Banjica</p>
+          <h1 class="glitch reveal" data-text="Toplina Italije, ritam Banjice">Toplina Italije, ritam Banjice</h1>
+        </div>
+        <a class="scroll-cue" href="#dobrodosli" aria-label="Skroluj na dobrodošlicu">
+          <span class="scroll-cue__ring">PIATTO BANJICA</span>
+          <span class="scroll-cue__line"></span>
+        </a>
+      </section>
+
+      <section class="welcome section section--light" id="dobrodosli">
+        <div class="container welcome__grid">
+          <div class="section-copy reveal">
+            <p class="kicker">Dobrodošli</p>
+            <h2>Restoran za duge ručkove, mirne večere i miris testa iz peći.</h2>
+            <p>
+              Piatto Banjica spaja italijansku kuhinju, opuštenu beogradsku energiju i enterijer koji poziva da se ostane još jedan krug. Na adresi Crnotravska 4, u ambijentu Banjice, služimo obroke za svaki deo dana: od jutarnje kafe i doručka, preko paste i pizze, do večere uz čašu vina.
+            </p>
+            <p>
+              Kuhinja je oslonjena na poznate ukuse, sveže sastojke i jela koja se dele za stolom. Posebno mesto zauzimaju ručno pripremljene pizze iz peći na drva, ali meni ostavlja dovoljno prostora i za pastu, meso, ribu, salate i poslastice.
+            </p>
+          </div>
+
+          <div class="welcome__images reveal">
+            <img src="assets/images/banjica-40.jpg" alt="Topao enterijer restorana sa drvenim policama" loading="lazy">
+            <img src="assets/images/banjica-19.jpg" alt="Bar Piatto Banjica sa osvetljenjem i policama pića" loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <section class="menu section section--dark" id="meni">
+        <div class="container menu__grid">
+          <div class="menu__intro reveal">
+            <p class="kicker">Naš meni</p>
+            <h2>Italijanski klasici, porodični favoriti i obroci za svaki deo dana.</h2>
+            <p>
+              Meni je napravljen za različite ritmove: brz doručak, poslovni ručak, opuštenu večeru ili okupljanje posle treninga i šetnje. U ponudi su pizze, paste, meso, riba, salate, doručak i deserti.
+            </p>
+            <a class="btn btn--gold" href="assets/docs/meni.pdf" target="_blank" rel="noopener">Otvori meni PDF</a>
+          </div>
+
+          <div class="menu-board reveal" aria-label="Izdvojene kategorije">
+            <article>
+              <span>01</span>
+              <h3>Pizza iz peći</h3>
+              <p>Hrskavo testo, sočni nadevi i prepoznatljiv miris peći na drva.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Pasta i rižoto</h3>
+              <p>Italijanski komfor u tanjiru, kremasto, jednostavno i puno ukusa.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Meso i riba</h3>
+              <p>Glavna jela za lagan ručak, večeru ili deljenje uz vino.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>Doručak i desert</h3>
+              <p>Od jutarnjih zalogaja do slatkog završetka obroka.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery section section--gallery" id="galerija">
+        <div class="container gallery__heading reveal">
+          <p class="kicker">Galerija</p>
+          <h2>Detalji prostora, svetlo za stolom i atmosfera zbog koje se ostaje.</h2>
+        </div>
+
+        <div class="gallery-grid" aria-label="Galerija restorana">
+          <a class="gallery-item gallery-item--large reveal" href="assets/images/banjica-58.jpg">
+            <img src="assets/images/banjica-58.jpg" alt="Prostrani enterijer restorana Piatto Banjica" loading="lazy">
+          </a>
+          <a class="gallery-item reveal" href="assets/images/banjica-59.jpg">
+            <img src="assets/images/banjica-59.jpg" alt="Stolovi i detalji restorana" loading="lazy">
+          </a>
+          <a class="gallery-item reveal" href="assets/images/banjica-22.jpg">
+            <img src="assets/images/banjica-22.jpg" alt="Restoranski sto i ambijent" loading="lazy">
+          </a>
+          <a class="gallery-item reveal" href="assets/images/banjica-24.jpg">
+            <img src="assets/images/banjica-24.jpg" alt="Detalj enterijera restorana" loading="lazy">
+          </a>
+          <a class="gallery-item gallery-item--tall reveal" href="assets/images/banjica-19.jpg">
+            <img src="assets/images/banjica-19.jpg" alt="Bar sa toplim osvetljenjem" loading="lazy">
+          </a>
+          <a class="gallery-item reveal" href="assets/images/banjica-28.jpg">
+            <img src="assets/images/banjica-28.jpg" alt="Udoban deo restorana" loading="lazy">
+          </a>
+          <a class="gallery-item reveal" href="assets/images/banjica-41.jpg">
+            <img src="assets/images/banjica-41.jpg" alt="Enterijer sa drvenim elementima" loading="lazy">
+          </a>
+          <a class="gallery-item reveal" href="assets/images/banjica-43.jpg">
+            <img src="assets/images/banjica-43.jpg" alt="Detalj restorana" loading="lazy">
+          </a>
+          <a class="gallery-item gallery-item--wide reveal" href="assets/images/banjica-48.jpg">
+            <img src="assets/images/banjica-48.jpg" alt="Širi pogled na salu restorana" loading="lazy">
+          </a>
+          <a class="gallery-item reveal" href="assets/images/banjica-52.jpg">
+            <img src="assets/images/banjica-52.jpg" alt="Stolovi pripremljeni za goste" loading="lazy">
+          </a>
+          <a class="gallery-item reveal" href="assets/images/banjica-54.jpg">
+            <img src="assets/images/banjica-54.jpg" alt="Detalji prostora i osvetljenja" loading="lazy">
+          </a>
+          <a class="gallery-item reveal" href="assets/images/banjica-55.jpg">
+            <img src="assets/images/banjica-55.jpg" alt="Enterijer restorana" loading="lazy">
+          </a>
+          <a class="gallery-item reveal" href="assets/images/banjica-57.jpg">
+            <img src="assets/images/banjica-57.jpg" alt="Glavni prostor restorana sa barom" loading="lazy">
+          </a>
+        </div>
+      </section>
+
+      <section class="contact section section--contact" id="kontakt">
+        <div class="container contact__grid">
+          <div class="contact__content reveal">
+            <p class="kicker">Kontakt</p>
+            <h2>Crnotravska 4, Banjica. Svaki dan od jutra do kasne večeri.</h2>
+            <p>
+              Piatto Banjica se nalazi na Voždovcu, u blizini bazena Banjica i Banjičke šume. Idealan je za doručak, ručak, porodični obrok, večeru ili opušteno piće uz prijatelje.
+            </p>
+
+            <div class="contact-cards">
+              <article>
+                <span>Adresa</span>
+                <strong>Crnotravska 4, Beograd</strong>
+                <a href="https://www.google.com/maps/search/?api=1&query=Piatto%20Banjica%20Crnotravska%204%20Beograd" target="_blank" rel="noopener">Otvori na Google Maps</a>
+              </article>
+              <article>
+                <span>Telefon</span>
+                <strong>011 / 408-6281</strong>
+                <a href="tel:+381114086281">Pozovi restoran</a>
+              </article>
+              <article>
+                <span>Radno vreme</span>
+                <strong>07:30 - 23:30</strong>
+                <p>Svakog dana</p>
+              </article>
+              <article>
+                <span>Instagram</span>
+                <strong>@piattobanjica</strong>
+                <a href="https://www.instagram.com/piattobanjica/" target="_blank" rel="noopener">Pogledaj profil</a>
+              </article>
+            </div>
+          </div>
+
+          <div class="contact__panel reveal">
+            <div class="rotator" aria-hidden="true">
+              <span data-rotating-text>PIATTO BANJICA • CRNOTRAVSKA 4 • BEOGRAD •</span>
+            </div>
+            <div class="map-card">
+              <iframe title="Mapa lokacije Piatto Banjica" src="https://www.google.com/maps?q=Piatto%20Banjica%2C%20Crnotravska%204%2C%20Beograd&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer__inner">
+        <img src="assets/images/logo-piatto.png" alt="Piatto Banjica">
+        <p>Italijanski restoran na Banjici. Pizza, pasta, meso, riba, doručak i večera u toplom, savremenom ambijentu.</p>
+        <nav aria-label="Navigacija u podnožju">
+          <a href="#pocetna">Početna</a>
+          <a href="#meni">Meni</a>
+          <a href="#galerija">Galerija</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+      </div>
+    </footer>
+
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Pregled slike iz galerije" hidden data-lightbox>
+      <button class="lightbox__backdrop" type="button" aria-label="Zatvori prikaz slike" data-lightbox-close></button>
+      <figure class="lightbox__figure">
+        <img src="" alt="" data-lightbox-image>
+      </figure>
+      <button class="lightbox__close" type="button" aria-label="Zatvori" data-lightbox-close>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+# Original source files kept outside the deployable site structure.
+/Banjica*.JPG
+/Logo Piatto vector.pdf
+/meni.pdf
+
+# OS/editor noise.
+.DS_Store
