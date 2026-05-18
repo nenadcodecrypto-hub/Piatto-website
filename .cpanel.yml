@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/saruna/public_html/
+    - export DEPLOYPATH=/home/saruna/public_html/piattobanjica.rs/
     - /bin/cp -R * $DEPLOYPATH
