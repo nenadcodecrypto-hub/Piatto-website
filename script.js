@@ -8,7 +8,14 @@ const galleryGrid = document.querySelector(".gallery-grid");
 const lightbox = document.querySelector("[data-lightbox]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
 const lightboxCloseButtons = document.querySelectorAll("[data-lightbox-close]");
+const lightboxPrev = document.querySelector("[data-lightbox-prev]");
+const lightboxNext = document.querySelector("[data-lightbox-next]");
+const galleryItems = galleryGrid ? [...galleryGrid.querySelectorAll(".gallery-item")] : [];
+let activeGalleryIndex = 0;
 let lastTouchOpen = 0;
+let ignoreGalleryTapUntil = 0;
+let galleryTouch = null;
+let lightboxTouch = null;
 
 const setHeaderState = () => {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -27,16 +34,35 @@ const closeLightbox = () => {
   document.body.classList.remove("lightbox-open");
   lightboxImage.removeAttribute("src");
   lightboxImage.alt = "";
+  ignoreGalleryTapUntil = Date.now() + 450;
+};
+
+const setLightboxImage = (index) => {
+  const link = galleryItems[index];
+  if (!link || !lightboxImage) return;
+  const image = link.querySelector("img");
+  if (!image) return;
+
+  lightboxImage.src = link.href;
+  lightboxImage.alt = image.alt;
+  activeGalleryIndex = index;
 };
 
 const openLightbox = (link) => {
-  const image = link.querySelector("img");
-  if (!image || !lightbox || !lightboxImage) return;
-  lightboxImage.src = link.href;
-  lightboxImage.alt = image.alt;
+  if (!lightbox || !lightboxImage) return;
+  const index = galleryItems.indexOf(link);
+  if (index === -1) return;
+
+  setLightboxImage(index);
   lightbox.hidden = false;
   document.body.classList.add("lightbox-open");
   lightbox.querySelector(".lightbox__close").focus();
+};
+
+const showAdjacentImage = (direction) => {
+  if (!lightbox || lightbox.hidden || galleryItems.length < 2) return;
+  const nextIndex = (activeGalleryIndex + direction + galleryItems.length) % galleryItems.length;
+  setLightboxImage(nextIndex);
 };
 
 const openGalleryImage = (event) => {
@@ -64,7 +90,7 @@ nav.querySelectorAll("a").forEach((link) => {
 });
 
 galleryGrid.addEventListener("click", (event) => {
-  if (Date.now() - lastTouchOpen < 500) {
+  if (Date.now() - lastTouchOpen < 500 || Date.now() < ignoreGalleryTapUntil) {
     event.preventDefault();
     return;
   }
@@ -73,10 +99,48 @@ galleryGrid.addEventListener("click", (event) => {
 });
 
 galleryGrid.addEventListener(
+  "touchstart",
+  (event) => {
+    const touch = event.changedTouches[0];
+    galleryTouch = {
+      x: touch.clientX,
+      y: touch.clientY,
+      time: Date.now(),
+      moved: false
+    };
+  },
+  { passive: true }
+);
+
+galleryGrid.addEventListener(
+  "touchmove",
+  (event) => {
+    if (!galleryTouch) return;
+    const touch = event.changedTouches[0];
+    const deltaX = Math.abs(touch.clientX - galleryTouch.x);
+    const deltaY = Math.abs(touch.clientY - galleryTouch.y);
+
+    if (deltaX > 10 || deltaY > 10) {
+      galleryTouch.moved = true;
+    }
+  },
+  { passive: true }
+);
+
+galleryGrid.addEventListener(
   "touchend",
   (event) => {
+    if (Date.now() < ignoreGalleryTapUntil) return;
+    if (!galleryTouch || galleryTouch.moved || Date.now() - galleryTouch.time > 700) {
+      ignoreGalleryTapUntil = Date.now() + 250;
+      galleryTouch = null;
+      return;
+    }
+
     lastTouchOpen = Date.now();
+    event.preventDefault();
     openGalleryImage(event);
+    galleryTouch = null;
   },
   { passive: false }
 );
@@ -85,10 +149,52 @@ lightboxCloseButtons.forEach((button) => {
   button.addEventListener("click", closeLightbox);
 });
 
+lightboxPrev.addEventListener("click", () => showAdjacentImage(-1));
+lightboxNext.addEventListener("click", () => showAdjacentImage(1));
+
+lightbox.addEventListener(
+  "touchstart",
+  (event) => {
+    const touch = event.changedTouches[0];
+    lightboxTouch = {
+      x: touch.clientX,
+      y: touch.clientY
+    };
+  },
+  { passive: true }
+);
+
+lightbox.addEventListener(
+  "touchend",
+  (event) => {
+    if (!lightboxTouch || lightbox.hidden) return;
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - lightboxTouch.x;
+    const deltaY = touch.clientY - lightboxTouch.y;
+
+    if (Math.abs(deltaX) > 48 && Math.abs(deltaY) < 80) {
+      showAdjacentImage(deltaX > 0 ? -1 : 1);
+    }
+
+    lightboxTouch = null;
+  },
+  { passive: true }
+);
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeNavigation();
     closeLightbox();
+  }
+
+  if (!lightbox || lightbox.hidden) return;
+
+  if (event.key === "ArrowLeft") {
+    showAdjacentImage(-1);
+  }
+
+  if (event.key === "ArrowRight") {
+    showAdjacentImage(1);
   }
 });
 
